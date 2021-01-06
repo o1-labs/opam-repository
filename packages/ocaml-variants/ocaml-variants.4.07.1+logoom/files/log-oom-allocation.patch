@@ -1,8 +1,16 @@
 diff --git a/byterun/memory.c b/byterun/memory.c
-index f92b23c4d..9558c7b5f 100644
+index f92b23c4d..44edcc013 100644
 --- a/byterun/memory.c
 +++ b/byterun/memory.c
-@@ -495,8 +495,10 @@ static inline value caml_alloc_shr_aux (mlsize_t wosize, tag_t tag,
+@@ -19,6 +19,7 @@
+ #include <string.h>
+ #include <stdarg.h>
+ #include <stddef.h>
++#include <stdio.h>
+ #include "caml/address_class.h"
+ #include "caml/config.h"
+ #include "caml/fail.h"
+@@ -495,8 +496,10 @@ static inline value caml_alloc_shr_aux (mlsize_t wosize, tag_t tag,
      if (new_block == NULL) {
        if (!raise_oom)
          return 0;
@@ -14,7 +22,7 @@ index f92b23c4d..9558c7b5f 100644
        else
          caml_raise_out_of_memory ();
      }
-@@ -765,8 +767,10 @@ CAMLexport void caml_stat_create_pool(void)
+@@ -765,8 +768,10 @@ CAMLexport void caml_stat_create_pool(void)
  {
    if (pool == NULL) {
      pool = malloc(SIZEOF_POOL_BLOCK);

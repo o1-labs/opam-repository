@@ -53,5 +53,5 @@ patches: [
 ]
 extra-files: [
   ["fix-gcc10.patch" "md5=7f467849e5a4714f49a11517b187184f"]
-  ["log-oom-allocation.patch" "md5=831c73099c0e38f8958c8815cf66dc85"]
+  ["log-oom-allocation.patch" "md5=06e579adabc52c30ef5a219862545d30"]
 ]
