@@ -1,0 +1,28 @@
+diff --git a/byterun/memory.c b/byterun/memory.c
+index f92b23c4d..9558c7b5f 100644
+--- a/byterun/memory.c
++++ b/byterun/memory.c
+@@ -495,8 +495,10 @@ static inline value caml_alloc_shr_aux (mlsize_t wosize, tag_t tag,
+     if (new_block == NULL) {
+       if (!raise_oom)
+         return 0;
+-      else if (caml_in_minor_collection)
++      else if (caml_in_minor_collection) {
++        fprintf(stderr, "Attempted to allocate %lu bytes", wosize);
+         caml_fatal_error ("Fatal error: out of memory.\n");
++      }
+       else
+         caml_raise_out_of_memory ();
+     }
+@@ -765,8 +767,10 @@ CAMLexport void caml_stat_create_pool(void)
+ {
+   if (pool == NULL) {
+     pool = malloc(SIZEOF_POOL_BLOCK);
+-    if (pool == NULL)
++    if (pool == NULL) {
++      fprintf(stderr, "Attempted to allocate %lu bytes for pool", SIZEOF_POOL_BLOCK);
+       caml_fatal_error("Fatal error: out of memory.\n");
++    }
+ #ifdef DEBUG
+     pool->magic = Debug_pool_magic;
+ #endif
