@@ -20,7 +20,6 @@ depends: [
   "bisect_ppx"
   "dune"                {build & >= "2.0"}
 ]
-available: [ ocaml-version >= "4.07.0" ]
 descr: "
 A library for treating folds as a first-class data structure and a monad
 "
