@@ -13,6 +13,7 @@ url {
   src: "git://github.com/o1-labs/snarky/snarky.git"
 }
 depends: [
+  "ocaml" {>= "4.07.0"}
   "core_kernel" {>= "v0.12" & < "v0.13" }
   "h_list"
   "fold_lib"
@@ -34,7 +35,6 @@ depends: [
 depopts: [
   "snarky_cuda"
 ]
-available: [ ocaml-version >= "4.07.0" ]
 descr: "
 A snarks DSL
 "
