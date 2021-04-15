@@ -9,9 +9,9 @@ license: "MIT"
 build: [
   ["dune" "build" "-p" name "-j" jobs]
 ]
-url: [
-  src: git://github.com/o1-labs/snarky/snarky.git
-]
+url {
+  src: "git://github.com/o1-labs/snarky/snarky.git"
+}
 depends: [
   "core_kernel" {>= "v0.12" & < "v0.13" }
   "h_list"
