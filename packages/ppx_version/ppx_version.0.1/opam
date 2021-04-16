@@ -1,0 +1,18 @@
+opam-version: "1.2"
+name: "ppx_version"
+maintainer: "opensource@o1labs.org"
+authors: ["O(1) Labs, LLC <opensource@o1labs.org>"]
+homepage: "https://github.com/o1-labs/ppx_version"
+bug-reports: "https://github.com/o1-labs/ppx_version/issues"
+dev-repo: "git+https://github.com/o1-labs/ppx_version.git"
+license: "MIT"
+build: [
+  ["dune" "build" "-p" name "-j" jobs]
+]
+url {
+  src: "git://github.com/o1-labs/ppx_version.git"
+}
+descr: "
+OCaml extension point (ppx) meant to assure the stability of types and their Bin_prot serializations.
+"
+
