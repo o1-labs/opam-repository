@@ -1,0 +1,15 @@
+opam-version: "2.0"
+maintainer: "opensource@o1labs.org"
+description: "OCaml extension point (ppx) meant to assure the stability of types and their Bin_prot serializations."
+build: [
+  ["dune" "build" "--only" "src" "--root" "." "-j" jobs "@install"]
+]
+depends: ["ocaml"]
+synopsis: ""
+url {
+  src: "https://github.com/mimoo/ppx_version/archive/0.1.0.tar.gz"
+  checksum: [
+    "md5=11d1cbbb952984f4171f069a2620b7c0"
+    "sha512=ea28df3f32ea18bc67a58fa5cda721d0bdec14c44132f7858c62c383b83528adf3c94962bd480bc381ee2a2b6fd8c4d21b1702fbc0eafad1bb34ea4c8c82a0c6"
+  ]
+}
