@@ -1,0 +1,19 @@
+opam-version: "2.0"
+version: "0.1-mina"
+build: [
+  ["dune" "build" "-p" name "-j" jobs]
+]
+depends: [
+  "ocamlfind" {build}
+  "ocamlbuild" {build}
+  "ctypes" {>= "0.4.0"}
+  "ctypes-foreign" {>= "0.4.0"}
+  "rocksdb_stubs"
+  "core"
+]
+url {
+  src:
+    "https://github.com/o1-labs/orocksdb/archive/c626daa0d4d3e6d095e20e51171b0e2e69b24d73.tar.gz"
+  checksum:
+    "sha256=06d7cdfc6202a9b8411d55778a4308d59bd3f38641b8757e9874bfca87a9a736"
+}
