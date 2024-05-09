@@ -1,5 +1,5 @@
 opam-version: "2.0"
-version: "~dev-mina"
+version: "~dev"
 synopsis:
   "A tool to check that the current opam environment is up to date with an opam.export file"
 description:

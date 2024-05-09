@@ -1,5 +1,5 @@
 opam-version: "2.0"
-version: "5.17.2-mina"
+version: "5.17.2"
 # Contents of extra source: 'stublibs: ["librocksdb_stubs.a"]'
 extra-source "rocksdb_stubs.install" {
   src: "https://gist.githubusercontent.com/georgeee/80966c56448bd9a6f453a0ffa3c10f60/raw/23024b7ef940f84cf95523d77da7d27b4c3ccdc8/rocksdb_stubs.install"

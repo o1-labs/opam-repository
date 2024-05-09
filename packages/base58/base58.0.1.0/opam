@@ -1,6 +1,6 @@
 opam-version: "0.1"
 name: "base58"
-version: "0.1.0-mina"
+version: "0.1.0"
 build: [
   [make "lib.byte" "lib.native"]   
 ]
