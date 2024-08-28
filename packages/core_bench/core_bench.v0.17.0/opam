@@ -30,6 +30,7 @@ available: arch != "arm32" & arch != "x86_32"
 synopsis: "Benchmarking library"
 description: "
 "
+patches: ["remove-problematic-mli-file.patch"]
 url {
 src: "https://github.com/janestreet/core_bench/archive/refs/tags/v0.17.0.tar.gz"
 checksum: "sha256=a093a77179629a8baef03f58947aac9cf5da37cc0ed7fabdd651832c4fe4cfe5"
