@@ -7,7 +7,7 @@ extra-source "rocksdb_stubs.install" {
 }
 build: [
   [ "bash" "-c"
-    "if [ -e ${MINA_ROCKSDB-/usr/local/lib/librocksdb_coda.a} ]; then cp ${MINA_ROCKSDB-/usr/local/lib/librocksdb_coda.a} librocksdb.a; chmod 666 librocksdb.a; else ROCKSDB_DISABLE_SNAPPY=1 ROCKSDB_DISABLE_GFLAGS=1 ROCKSDB_DISABLE_LZ4=1 ROCKSDB_DISABLE_ZSTD=1 ROCKSDB_DISABLE_NUMA=1 ROCKSDB_DISABLE_TBB=1 ROCKSDB_DISABLE_JEMALLOC=1 ROCKSDB_DISABLE_TCMALLOC=1 ROCKSDB_DISABLE_BACKTRACE=1 PORTABLE=1 FORCE_SSE42=1 DISABLE_WARNING_AS_ERROR=1 make static_lib -j8; fi"
+    "if [ -e ${MINA_ROCKSDB-/usr/local/lib/librocksdb_coda.a} ]; then cp ${MINA_ROCKSDB-/usr/local/lib/librocksdb_coda.a} librocksdb.a; chmod 666 librocksdb.a; else ROCKSDB_DISABLE_SNAPPY=1 ROCKSDB_DISABLE_GFLAGS=1 ROCKSDB_DISABLE_LZ4=1 ROCKSDB_DISABLE_ZSTD=1 ROCKSDB_DISABLE_NUMA=1 ROCKSDB_DISABLE_TBB=1 ROCKSDB_DISABLE_JEMALLOC=1 ROCKSDB_DISABLE_TCMALLOC=1 ROCKSDB_DISABLE_BACKTRACE=1 ROCKSDB_USE_IO_URING=0 PORTABLE=1 FORCE_SSE42=1 DISABLE_WARNING_AS_ERROR=1 make static_lib -j8; fi"
   ]
   ["strip" "-S" "librocksdb.a"]
   ["mv" "librocksdb.a" "librocksdb_stubs.a"]
