@@ -1,0 +1,19 @@
+opam-version: "2.0"
+version: "0.2.0"
+build: [
+  ["dune" "build" "-p" name "-j" jobs]
+]
+depends: [
+  "ocamlfind" {build}
+  "ocamlbuild" {build}
+  "ctypes" {>= "0.4.0"}
+  "ctypes-foreign" {>= "0.4.0"}
+  "rocksdb_stubs" {>= "10.2.1"}
+  "core"
+]
+url {
+  src:
+    "https://github.com/glyh/orocksdb/archive/9f89a107f021f1fd15f1546ac6970a14dc95b720.tar.gz"
+  checksum:
+    "sha256=d3596ca9dee861c154bd018ffdf25e29ff3a0e86f202fd7ad15735795dd161cb"
+}
