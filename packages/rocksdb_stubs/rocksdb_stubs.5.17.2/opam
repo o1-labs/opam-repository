@@ -24,7 +24,7 @@ ROCKSDB_DISABLE_TBB=1 ROCKSDB_DISABLE_JEMALLOC=1 \
 ROCKSDB_DISABLE_TCMALLOC=1 ROCKSDB_DISABLE_BACKTRACE=1 PORTABLE=1 \
 FORCE_SSE42=1 DISABLE_WARNING_AS_ERROR=1 \
 CXXFLAGS='-include cstdint' \
-make static_lib -j2; fi"
+make static_lib -j$(nproc); fi"
   ]
   ["strip" "-S" "librocksdb.a"]
   ["mv" "librocksdb.a" "librocksdb_stubs.a"]
