@@ -1,17 +1,35 @@
 opam-version: "2.0"
 version: "5.17.2"
+
 # Contents of extra source: 'stublibs: ["librocksdb_stubs.a"]'
 extra-source "rocksdb_stubs.install" {
-  src: "https://gist.githubusercontent.com/georgeee/80966c56448bd9a6f453a0ffa3c10f60/raw/23024b7ef940f84cf95523d77da7d27b4c3ccdc8/rocksdb_stubs.install"
-  checksum: "sha256=c6450141e1d8b4ad2034a6704fc8902e50f9ac28c66a490c2b460e7a23f63b7a"
+  src:
+    "https://gist.githubusercontent.com/georgeee/80966c56448bd9a6f453a0ffa3c10f60/raw/23024b7ef940f84cf95523d77da7d27b4c3ccdc8/rocksdb_stubs.install"
+  checksum:
+    "sha256=c6450141e1d8b4ad2034a6704fc8902e50f9ac28c66a490c2b460e7a23f63b7a"
 }
+# Note that CXXFLAGS are set in the build step.
+# This is necessary to support GCC 13+.
+# Note that this is a temporary workaround. Updating to a newer version of
+# RocksDB should be done in the future.
 build: [
-  [ "bash" "-c"
-    "if [ -e ${MINA_ROCKSDB-/usr/local/lib/librocksdb_coda.a} ]; then cp ${MINA_ROCKSDB-/usr/local/lib/librocksdb_coda.a} librocksdb.a; chmod 666 librocksdb.a; else ROCKSDB_DISABLE_SNAPPY=1 ROCKSDB_DISABLE_GFLAGS=1 ROCKSDB_DISABLE_LZ4=1 ROCKSDB_DISABLE_ZSTD=1 ROCKSDB_DISABLE_NUMA=1 ROCKSDB_DISABLE_TBB=1 ROCKSDB_DISABLE_JEMALLOC=1 ROCKSDB_DISABLE_TCMALLOC=1 ROCKSDB_DISABLE_BACKTRACE=1 PORTABLE=1 FORCE_SSE42=1 DISABLE_WARNING_AS_ERROR=1 make static_lib -j2; fi"
+  [
+    "bash" "-c"
+    "if [ -e ${MINA_ROCKSDB-/usr/local/lib/librocksdb_coda.a} ]; then \
+cp ${MINA_ROCKSDB-/usr/local/lib/librocksdb_coda.a} librocksdb.a; \
+chmod 666 librocksdb.a; else \
+ROCKSDB_DISABLE_SNAPPY=1 ROCKSDB_DISABLE_GFLAGS=1 \
+ROCKSDB_DISABLE_LZ4=1 ROCKSDB_DISABLE_ZSTD=1 ROCKSDB_DISABLE_NUMA=1 \
+ROCKSDB_DISABLE_TBB=1 ROCKSDB_DISABLE_JEMALLOC=1 \
+ROCKSDB_DISABLE_TCMALLOC=1 ROCKSDB_DISABLE_BACKTRACE=1 PORTABLE=1 \
+FORCE_SSE42=1 DISABLE_WARNING_AS_ERROR=1 \
+CXXFLAGS='-include cstdint' \
+make static_lib -j2; fi"
   ]
   ["strip" "-S" "librocksdb.a"]
   ["mv" "librocksdb.a" "librocksdb_stubs.a"]
 ]
+
 url {
   src:
     "https://github.com/facebook/rocksdb/archive/refs/tags/v5.17.2.tar.gz"
