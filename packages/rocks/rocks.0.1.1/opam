@@ -1,0 +1,41 @@
+opam-version: "2.0"
+synopsis: "Binding to RocksDB for OCaml"
+maintainer: "O(1) Labs, LLC <opensource@o1labs.org>"
+authors: "Jan Doms"
+license: "MIT"
+homepage: "https://github.com/o1-labs/orocksdb/"
+bug-reports: "https://github.com/o1-labs/orocksdb/issues"
+depends: [
+  "dune" {>= "3.1"}
+  "dune-configurator"
+  "ocaml" {>= "4.14" & < "5.0"}
+  "alcotest" {with-test}
+  "conf-libbz2"
+  "conf-zlib"
+  "ctypes" {>= "0.4.0"}
+  "ctypes-foreign" {>= "0.4.0"}
+  "rocksdb_stubs" {= "5.17.2"}
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/o1-labs/orocksdb.git"
+url {
+  src: "https://github.com/o1-labs/orocksdb/archive/refs/tags/0.1.1.tar.gz"
+  checksum: [
+    "md5=e89c1cb39f7c28df0c651ac824acc3ab"
+    "sha512=4656e5afccf3685d89fbdc53bc0b89db9c1879b68bc3b9e0729388ab8e25addb63132f1ff9f98da781ca878b6482696644717d0350651d8ca807545aa9fb351a"
+  ]
+}
