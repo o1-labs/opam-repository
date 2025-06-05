@@ -10,6 +10,12 @@ depends: [
   "dune-configurator"
   "ocaml" {>= "4.14" & < "5.0"}
   "alcotest" {with-test}
+  # Dependencies required to build the RocksDB C library.
+  # For rocksdb 5.17.2, bash and which are required to build the RocksDB C
+  # library as it is used in the build system.
+  "conf-bash"
+  "conf-which"
+  # Dependencies required to link against the RocksDB C library
   "conf-libbz2"
   "conf-zlib"
   "ctypes" {>= "0.4.0"}
