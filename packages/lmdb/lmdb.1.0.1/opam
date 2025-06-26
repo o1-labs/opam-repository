@@ -1,0 +1,47 @@
+opam-version: "2.0"
+maintainer: "Gabriel Radanne <drupyog@zoho.com>"
+synopsis: "Bindings for LMDB, a fast in-file database with ACID transactions"
+authors: [
+  "Gabriel Radanne <drupyog@zoho.com>"
+  "Christopher Zimmermann <christopher@gmerlin.de>"
+]
+license: "MIT"
+homepage: "https://github.com/Drup/ocaml-lmdb"
+bug-reports: "https://github.com/Drup/ocaml-lmdb/issues"
+dev-repo: "git+https://github.com/Drup/ocaml-lmdb.git"
+doc: "https://drup.github.io/ocaml-lmdb/dev/lmdb/Lmdb/index.html"
+tags: [ "clib:lmdb" "database" ]
+build: [
+  ["dune" "subst"] {dev}
+  ["dune" "build" "-p" name "-j" jobs]
+  ["dune" "runtest" "-p" name "-j" jobs] {with-test}
+]
+depends: [
+  "ocaml" {>= "4.03"}
+  "bigstringaf"
+  "dune" {>= "1.2"}
+  "dune-configurator" {build}
+  "alcotest" {with-test}
+  "benchmark" {with-test}
+  "odoc" {with-doc}
+]
+
+depexts: [
+  ["liblmdb-dev"] {os-family = "debian"}
+  ["lmdb"] {os-family = "bsd"}
+  ["lmdb"] {os-family = "homebrew"}
+  ["lmdb"] {os-family = "macports"}
+  ["lmdb"] {os-family = "archlinux"}
+  ["lmdb"] {os-family = "gentoo"}
+  ["lmdb-dev"] {os-family = "alpine"}
+  ["lmdb-devel"] {os-family = "fedora"}
+  ["lmdb-devel"] {os-family = "suse" | os-family = "opensuse"}
+  ["liblmdb-devel"] {os-family = "mageia"}
+]
+url {
+  src: "https://github.com/Drup/ocaml-lmdb/archive/4e2648e6db651ddc8160d34db3f0e42cae32fdb0.tar.gz"
+  checksum: [
+    "md5=40a9df09dbd4954c4b7dc495743b19e7"
+    "sha512=076c2ba1b9a33bafdc225403988ed3396d20a463e2e4101d173863a0b1a98c7a6cc93e6be91219aff7adb2b4244707653f710f5ff0f010816c1b6246c2a64426"
+  ]
+}
