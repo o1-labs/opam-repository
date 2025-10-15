@@ -8,7 +8,7 @@ depends: [
   "ocamlbuild" {build}
   "ctypes" {>= "0.4.0"}
   "ctypes-foreign" {>= "0.4.0"}
-  "rocksdb_stubs" {>= "10.2.1"}
+  "rocksdb_stubs" {>= "10.2.1" & <= "10.5.1"}
   "core"
 ]
 url {
