@@ -1,0 +1,50 @@
+opam-version: "2.0"
+version: "5.2.1"
+maintainer: "sheets@alum.mit.edu"
+authors: [
+  "David Sheets <sheets@alum.mit.edu>"
+  "Peter Zotov <whitequark@whitequark.org>"
+  "Benjamin Canou <benjamin@ocamlpro.com>"
+]
+homepage: "https://github.com/dsheets/ocaml-sodium/"
+bug-reports: "https://github.com/dsheets/ocaml-sodium/issues/"
+dev-repo: "git+https://github.com/dsheets/ocaml-sodium.git"
+tags: ["org:mirage"]
+build: [
+  ["dune" "subst"] {pinned}
+  ["dune" "build" "-p" name "-j" jobs]
+  ["dune" "runtest"] {with-test}
+]
+depends: [
+  "ocaml" {>= "5.2.1"}
+  "dune" {build & >= "1.5"}
+  "base-bigarray"
+  "base-bytes"
+  "ocamlfind" {build}
+  "ocamlbuild" {build}
+  "ctypes" {>= "0.13.0"}
+  "ounit2" {with-test & >= "2.2.6"}
+]
+depexts: [
+   ["libsodium-dev"] {os-family = "debian"} 
+   ["pkg-config"] {os-family = "debian"} 
+
+   ["libsodium"] {os-distribution = "homebrew" & os = "macos"} 
+   ["pkgconf"] {os-distribution = "homebrew" & os = "macos"} 
+]
+post-messages: [
+  "This package requires installation of libsodium-dev (>= 1.0.9)"
+  { failure & os = "debian" }
+  "This package requires installation of libsodium-dev (>= 1.0.9)"
+  { failure & os = "ubuntu" }
+  "This package requires installation of security/libsodium (>= 1.0.9)"
+  { failure & os = "freebsd" }
+  "This package requires installation of libsodium (>= 1.0.9)"
+  { failure & os = "macos" }
+]
+url {
+  src:
+    "https://github.com/glyh/ocaml-sodium/archive/6b3e0daed7740bc527ba2fb6ec14b34e64a0b6a5.tar.gz"
+  checksum:
+    "sha256=4da77480d3739ca1781f3c697222d357b74f6f3e3dbe8ad7236be40a4c1f138a"
+}
