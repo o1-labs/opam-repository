@@ -17,7 +17,7 @@ build: [
 ]
 depends: [
   "ocaml" {>= "5.2.1"}
-  "dune" {build & >= "1.5"}
+  "dune" {build & >= "3.15"}
   "base-bigarray"
   "base-bytes"
   "ocamlfind" {build}
@@ -44,7 +44,7 @@ post-messages: [
 ]
 url {
   src:
-    "https://github.com/glyh/ocaml-sodium/archive/6b3e0daed7740bc527ba2fb6ec14b34e64a0b6a5.tar.gz"
+    "https://github.com/o1-labs/ocaml-sodium/archive/e474c5bd7524837037bb632277c63dd13574ee76.tar.gz"
   checksum:
-    "sha256=4da77480d3739ca1781f3c697222d357b74f6f3e3dbe8ad7236be40a4c1f138a"
+    "sha256=92e8072eb09a719f2b6f48782d63c2d4f83e19f01bb350391be482d9047fb95e"
 }
